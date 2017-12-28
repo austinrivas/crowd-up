@@ -1,0 +1,11 @@
+email: austinrivas@gmail.com
+fullname: 'Austin Rivas'
+title: 'Core Dev'
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$kj8tFajIR7wnI9L4RN9/IOgdu.IEHhG0h1raA/EmDZVq5Omd8EOiy
