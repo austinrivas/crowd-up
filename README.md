@@ -23,19 +23,13 @@ Note: All paths are relative to the project root.
 
 - `docker-compose up -d`
 
-- `docker-compose exec nginx-php-grav php bin/grav install`
+- `./scripts/grav-install.sh`
 
-- `docker-compose exec nginx-php-grav php bin/gpm install admin` (only initial install)
+- `./scripts/yarn-install.sh`
 
-- `docker-compose exec nginx-php-grav php bin/gpm install haywire` (only initial install)
+- `./scripts/build-production.sh`
 
-- `cd grav/user/themes/haywire`
-
-- `yarn && yarn run production`
-
-- or `yarn && yarn run dev`
-
-- or `yarn && yarn run watch`
+- or `./scripts/build-local.sh`
 
 ## Known Issues
 
