@@ -2,4 +2,4 @@
 title: 'Tiled Content'
 ---
 
-This is modular tiled content.
+Want to enjoy high growth investments in start-ups but still want the liquidity of public stock?
