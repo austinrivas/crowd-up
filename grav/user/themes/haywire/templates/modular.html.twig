@@ -1,0 +1,10 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        {% for module in page.collection() %}
+            <div id="{{ _self.pageLinkName(module.menu) }}"></div>
+            {{ module.content }}
+        {% endfor %}
+    </div>
+{% endblock %}
