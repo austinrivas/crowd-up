@@ -5,11 +5,26 @@ This application uses the Grav flat-file cms to serve a static web application v
 The scope of the application is to serve as a viable CMS for pages, blog posts, custom post types, and media assets while providing
 the ability to version control content/configuration changes.
 
+## [Staging](http://159.89.241.84/) | [Admin](http://159.89.241.84/admin)
+
+The staging environment is a DigitalOcean droplet based on the prebuilt Docker configuration.
+
+The environment uses [`nvm`](https://github.com/creationix/nvm) to manage the `node` installation for building the front-end and has `docker`, `docker-compose`, and [`yarn`](https://yarnpkg.com/en/docs/install#linux-tab) installed.
+
+Deployment currently consists of ssh'ing into the root user for the droplet and pulling down changes from master and rebuilding the front-end.
+
+You can add the staging ip to your `/etc/hosts` declaration to allow shortcutting the ssh commands.
+
+* `ssh root@crowd-up`
+* `cd repos/crowd-up`
+* `git pull origin master`
+* `./scripts/grav-install.sh`
+* `./scripts/yarn-install.sh`
+* `./scripts/build-production.sh`
+
 ## [Local](http://localhost) | [Admin](http://localhost/admin)
 
-TODO: Describe local environment snowflakes
-
-# Build App
+# Build App Locally
 
 Note: All paths are relative to the project root.
 
@@ -23,11 +38,9 @@ Note: All paths are relative to the project root.
 
 - `docker-compose up -d`
 
-- `./scripts/grav-install.sh`
+- `./scripts/grav-install.sh` (on initial setup only)
 
-- `./scripts/yarn-install.sh`
-
-- `./scripts/build-production.sh`
+- `./scripts/yarn-install.sh` (on initial setup only)
 
 - or `./scripts/build-local.sh`
 
