@@ -50,7 +50,7 @@ This front-end theme located in [grav/user/themes/haywire](grav/user/themes/hayw
 
 You can view which theme is currently active in [grav/user/config/system.yaml](grav/user/config/system.yaml)
 
-```aidl
+```yaml
 pages:
   theme: haywire
 ```
@@ -65,19 +65,19 @@ Its key features are :
 
 ## Grav | [README](grav/README.md) | [DOCS](https://learn.getgrav.org/)
 
-If you are using the admin plugin, you can simply Update Grav itself from the notice. 
+If you are using the admin plugin, you can update Grav itself from the notice. 
 
 You can click the Update button to update plugins and themes. If you don't see any updates, you can clear the GPM cache by clicking the Check for Updates button in the top-right.
 
-Updating is now a simple affair. Simply navigate to the root of the Grav install in your terminal and type:
+You can also update Grav manually by navigating to the root of the project in your terminal and running:
 
-`$ bin/gpm selfupgrade -f`
+- `docker-compose exec nginx-php-grav php bin/gpm selfupgrade -f`
 
 This will upgrade the Grav core to the latest version. Additionally, you should update all your plugins and themes to the latest version (including the admin plugin if you have that installed).
 
 You can do this using the command below:
 
-`$ bin/gpm update -f`
+- `docker-compose exec nginx-php-grav php bin/gpm update -f`
 
 ## Content
 
@@ -87,7 +87,9 @@ For additional information on the function and capabilities of the `pages` direc
 
 ## Plugins | [Registry](https://getgrav.org/downloads/plugins)
 
-Grav provides a plugin system that is available by calling the `bin/gpm install pluginname` command.
+You can install Grav plugins from the official Grav registry by running the following command:
+
+- `docker-compose exec nginx-php-grav php bin/gpm install <plugin-name>`
 
 Plugins are stored in the [grav/user/plugins](grav/user/plugins) directory.
 
@@ -111,7 +113,7 @@ The admin portal url is defined in `login.yml` and is also available for managem
 
 User management is done via the `bin/plugin login newuser` command and is described in further detail in the `login` plugin and this entry in the [Admin FAQ](https://learn.getgrav.org/admin-panel/faq#adding-and-managing-users).
 
-All user accounts are versioned and stored a yaml file named after their username e.g. `grav/user/accounts/someadmin.yaml`.
+All user accounts are versioned and stored a yaml file named after their username e.g. `grav/user/accounts/someuser.yaml`.
 
 ### Grav Email | [README](grav/user/plugins/email/README.md) | [Github](https://github.com/getgrav/grav-plugin-email)
 
