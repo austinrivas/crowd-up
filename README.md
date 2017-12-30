@@ -5,7 +5,7 @@ This application uses the Grav flat-file cms to serve a static web application v
 The scope of the application is to serve as a viable CMS for pages, blog posts, custom post types, and media assets while providing
 the ability to version control content/configuration changes.
 
-## [Staging](http://159.89.241.84/) | [Admin](http://159.89.241.84/admin)
+## [Staging Environment](http://159.89.241.84/) | [Admin](http://159.89.241.84/admin)
 
 The staging environment is a DigitalOcean droplet based on the prebuilt Docker configuration.
 
@@ -22,9 +22,9 @@ You can add the staging ip to your `/etc/hosts` declaration to allow shortcuttin
 * `./scripts/yarn-install.sh`
 * `./scripts/build-production.sh`
 
-## [Local](http://localhost) | [Admin](http://localhost/admin)
+## [Local Environment](http://localhost) | [Admin](http://localhost/admin)
 
-# Build App Locally
+### Build App Locally
 
 Note: All paths are relative to the project root.
 
@@ -44,29 +44,7 @@ Note: All paths are relative to the project root.
 
 - or `./scripts/build-local.sh`
 
-## Known Issues
-
-If after you run `docker-compose up` you seen an error like:
-
-```bash
-Starting crowd-up ... 
-Starting crowd-up ... error
-
-ERROR: for crowd-up  Cannot start service nginx-php-grav: driver failed programming external connectivity on endpoint crowd-up (ce07c3b7c8c4c93c90370e8e0843f79e2fdbf892681374382b9b08317d0a057d): Error starting userland proxy: Bind for 0.0.0.0:80: unexpected error (Failure EADDRINUSE)
-
-ERROR: for nginx-php-grav  Cannot start service nginx-php-grav: driver failed programming external connectivity on endpoint crowd-up (ce07c3b7c8c4c93c90370e8e0843f79e2fdbf892681374382b9b08317d0a057d): Error starting userland proxy: Bind for 0.0.0.0:80: unexpected error (Failure EADDRINUSE)
-ERROR: Encountered errors while bringing up the project.
-```
-
-Then you need to stop whatever service is running on port `80`.
-
-If you visit http://localhost and see a message that reads "It Works!", then it is Apache that is tying up port 80.
-
-Stop Apache by running `sudo apachectl stop` or `sudo apachectl -k stop` and rerun `docker-compose up`.
-
-TODO: Bind container to a static ip locally and use a hosts declaration to avoid this issue in the future.
-
-# Front End
+## Theme | [README](grav/user/themes/haywire/README.md) | [Github](https://github.com/robbinfellow/haywire-grav)
 
 This front-end theme located in [grav/user/themes/haywire](grav/user/themes/haywire)
 
@@ -77,10 +55,6 @@ pages:
   theme: haywire
 ```
 
-If the active theme is changed be sure to update the symlink.
-
-## Theme | [README](grav/user/themes/haywire/README.md) | [Github](https://github.com/robbinfellow/haywire-grav)
-
 Its key features are : 
 
 - Laravel Mix (webpack asset pipeline wrapped in Laravel) | [Github](https://github.com/JeffreyWay/laravel-mix)
@@ -89,13 +63,7 @@ Its key features are :
 
 - VueJS Framework | [Github](https://github.com/vuejs/vue) | [Docs](https://vuejs.org/v2/guide/)
 
-### Build Commands
-
-- Production Build : `cd grav/user/themes/haywire && yarn run production`
-- Development Build : `cd grav/user/themes/haywire && yarn run dev`
-- Watch Local Files : `cd grav/user/themes/haywire && yarn run watch`
-
-# Grav | [README](grav/README.md) | [DOCS](https://learn.getgrav.org/)
+## Grav | [README](grav/README.md) | [DOCS](https://learn.getgrav.org/)
 
 If you are using the admin plugin, you can simply Update Grav itself from the notice. 
 
@@ -184,3 +152,27 @@ The `.ssh`, `grav`, and `nginx` directories are all mounted external volumes of 
     **/root/.ssh/**
 
   (Optional) Here you can put your **public** key so you can access container via SSH. After that, open a SSH connection to root@your_server:2222 specifying your **private** key.
+  
+## Known Issues
+
+### Docker Port Already in Use
+
+If after you run `docker-compose up` you seen an error like:
+
+```bash
+Starting crowd-up ... 
+Starting crowd-up ... error
+
+ERROR: for crowd-up  Cannot start service nginx-php-grav: driver failed programming external connectivity on endpoint crowd-up (ce07c3b7c8c4c93c90370e8e0843f79e2fdbf892681374382b9b08317d0a057d): Error starting userland proxy: Bind for 0.0.0.0:80: unexpected error (Failure EADDRINUSE)
+
+ERROR: for nginx-php-grav  Cannot start service nginx-php-grav: driver failed programming external connectivity on endpoint crowd-up (ce07c3b7c8c4c93c90370e8e0843f79e2fdbf892681374382b9b08317d0a057d): Error starting userland proxy: Bind for 0.0.0.0:80: unexpected error (Failure EADDRINUSE)
+ERROR: Encountered errors while bringing up the project.
+```
+
+Then you need to stop whatever service is running on port `80`.
+
+If you visit http://localhost and see a message that reads "It Works!", then it is Apache that is tying up port 80.
+
+Stop Apache by running `sudo apachectl stop` or `sudo apachectl -k stop` and rerun `docker-compose up`.
+
+TODO: Bind container to a static ip locally and use a hosts declaration to avoid this issue in the future.
