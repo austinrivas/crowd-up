@@ -133,6 +133,8 @@ The `nginx-php-grav` docker image is used to serve this application.
 
 TODO: evaluate nginx config for hardening
 
+TODO: update nginx exclusion rules to return 403 for all file access in root that isn't required (LICENSE.txt, README.md, etc.)
+
 ## Volumes
 
 The `.ssh`, `grav`, and `nginx` directories are all mounted external volumes of the `nginx-php-grav` docker image.
